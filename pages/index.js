@@ -10,10 +10,32 @@ import {
   AiFillMail,
 } from "react-icons/ai";
 import avatar from "../public/avatar.png";
+import LearnMore from "@/components/LearnMore";
+import DarkButton from "@/components/DarkButton";
 
 const inter = Inter({ subsets: ["latin"] });
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+function hackerize(event, iterSkip = 1 / 3) {
+  let iterations = 0;
+  const interval = setInterval(() => {
+    event.target.innerText = event.target.innerText
+      .split("")
+      .map((letter, index) => {
+        if (index < iterations) return event.target.dataset.value[index];
+        return letters[Math.floor(Math.random() * 26)];
+      })
+      .join("");
+
+    if (iterations >= event.target.dataset.value.length)
+      clearInterval(interval);
+    iterations += iterSkip;
+  }, 40);
+}
 
 export default function Home() {
+  let subtitle =
+    "Software Developer " + "\u2756" + " Machine Learning Engineer";
   return (
     <div>
       <Head>
@@ -23,14 +45,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className=" text-lime-100">
-        <section className=" bg-gradient-to-b from-slate-900 to-slate-600 min-h-screen">
+        <section className="main-bg">
           <nav className=" py-10 mb-12 px-5 flex justify-between">
             {/* <h1 className=' text-2xl'></h1> */}
             <ul className=" flex items-center ">
               <li className=" font-mono text-xl">
                 <a
                   href="/projects"
-                  className=" rounded-md p-2 hover:text-slate-900 hover:bg-lime-100 "
+                  className=" rounded-md p-2 hover:text-slate-900 hover:bg-lime-100"
                 >
                   Projects
                 </a>
@@ -46,12 +68,13 @@ export default function Home() {
             </ul>
             <ul className=" flex items-center">
               <li className="text-2xl cursor-pointer hover:text-black hover:bg-lime-100 rounded-md p-2">
-                <BsFillMoonStarsFill />
+                <DarkButton />
               </li>
               <li>
                 <a
                   className=" bg-gradient-to-r from-emerald-700 to-slate-900 py-2 px-2 border-none rounded-md ml-3 text-stone-200 font-mono hover:text-white "
-                  href="#"
+                  href="https://drive.google.com/file/d/18kfzzxiHuOqVZdCBnmUnr3cFvJ2KRdmI/view"
+                  target="_blank"
                 >
                   Resume
                 </a>
@@ -61,12 +84,25 @@ export default function Home() {
           <div className=" mt-6 relative mx-auto bg-gradient-to-b from-current w-80 rounded-full overflow-hidden">
             <Image src={avatar} />
           </div>
-          <div className=" text-center p-5">
-            <h2 className=" text-5xl py-2">Barun Das</h2>
-            <h3 className=" text-3xl py-2">CS Grad at Georgia Tech</h3>
+          <div className=" text-center p-5 font-mono">
+            <h2
+              data-value="BARUN DAS"
+              className=" text-5xl"
+              onMouseOver={(e) => hackerize(e)}
+            >
+              BARUN DAS
+            </h2>
+            <h3
+              className=" text-2xl p-4 justify-center"
+              data-value="Software Developer"
+              onMouseOver={(e) => hackerize(e, 1)}
+            >
+              Software Developer
+            </h3>
+            <LearnMore text="Learn More ->" />
             <p className=" py-5 text-xl leading-6 text-gray-400">
-              I am a machine learning student and researcher who enjoys building
-              scalable and efficient software systems
+              Software developer and machine learning researcher, with a passion
+              for designing scalable and efficient systems
             </p>
           </div>
           <div className=" text-2xl justify-center flex text-gray-300 gap-7 py-1 ">
