@@ -12,7 +12,11 @@ module.exports = {
     extend: {
       fontFamily: {
         lora: ["Lora", "serif"],
-        noto: ["Noto Sans KR, sans-serif"],
+        noto: ["Noto Sans KR", "sans-serif"],
+        staatliches: ["Staatliches", "cursive"],
+        akatab: ["Akatab", "sans-serif"],
+        mplus1: ["M PLUS 1 Code", "monospace"],
+        fonda: ["Fondamento", "cursive"]
       },
       transitionTimingFunction: {
         "fill-in-out": "cubic-bezier(0.680, -0.550, 0.265, 1.550)",
@@ -21,12 +25,6 @@ module.exports = {
         "40r": "40rem",
       },
     },
-    // colors: {
-    //   cream: "#f2f4f3",
-    //   viridian: "#22333b",
-    //   mud: "#5e503f",
-    //   dark: "#0a0908",
-    // },
   },
   plugins: [],
   darkMode: "class",

@@ -12,6 +12,7 @@ import {
 import avatar from "../public/avatar.png";
 import LearnMore from "@/components/LearnMore";
 import DarkButton from "@/components/DarkButton";
+import Header from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -46,45 +47,11 @@ export default function Home() {
       </Head>
       <main className=" text-lime-100">
         <section className="main-bg">
-          <nav className=" py-10 mb-12 px-5 flex justify-between">
-            {/* <h1 className=' text-2xl'></h1> */}
-            <ul className=" flex items-center ">
-              <li className=" font-mono text-xl">
-                <a
-                  href="/projects"
-                  className=" rounded-md p-2 hover:text-slate-900 hover:bg-lime-100"
-                >
-                  Projects
-                </a>
-              </li>
-              <li className=" font-mono text-xl">
-                <a
-                  href="/experience"
-                  className=" rounded-md p-2 hover:text-slate-900 hover:bg-lime-100 "
-                >
-                  Experience
-                </a>
-              </li>
-            </ul>
-            <ul className=" flex items-center">
-              <li className="text-2xl cursor-pointer hover:text-black hover:bg-lime-100 rounded-md p-2">
-                <DarkButton />
-              </li>
-              <li>
-                <a
-                  className=" bg-gradient-to-r from-emerald-700 to-slate-900 py-2 px-2 border-none rounded-md ml-3 text-stone-200 font-mono hover:text-white "
-                  href="https://drive.google.com/file/d/18kfzzxiHuOqVZdCBnmUnr3cFvJ2KRdmI/view"
-                  target="_blank"
-                >
-                  Resume
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <Header />
           <div className=" mt-6 relative mx-auto bg-gradient-to-b from-current w-80 rounded-full overflow-hidden">
             <Image src={avatar} />
           </div>
-          <div className=" text-center p-5 font-mono">
+          <div className=" text-gray-500 text-center p-5 font-mono dark:text-lime-100">
             <h2
               data-value="BARUN DAS"
               className=" text-5xl"
@@ -93,29 +60,45 @@ export default function Home() {
               BARUN DAS
             </h2>
             <h3
-              className=" text-2xl p-4 justify-center"
-              data-value="Software Developer"
+              className=" text-2xl p-4 text-center font-medium"
+              data-value="Software Engineer"
               onMouseOver={(e) => hackerize(e, 1)}
             >
-              Software Developer
+              Software Engineer
             </h3>
             <LearnMore text="Learn More ->" />
-            <p className=" py-5 text-xl leading-6 text-gray-400">
+            <p className=" py-5 text-2xl font-light leading-6 text-gray-400">
               Software developer and machine learning researcher, with a passion
               for designing scalable and efficient systems
             </p>
           </div>
-          <div className=" text-2xl justify-center flex text-gray-300 gap-7 py-1 ">
-            <a href=" mailto:barun.das.23@gmail.com" target=" _blank">
+          <div className=" text-2xl justify-center flex text-gray-700 gap-7 py-1 ">
+            <a
+              href=" mailto:barun.das.23@gmail.com"
+              target=" _blank"
+              className="hover:scale-125 transition-transform"
+            >
               <AiFillMail />
             </a>
-            <a href="https://www.linkedin.com/in/barun-das/" target="_blank">
+            <a
+              href="https://www.linkedin.com/in/barun-das/"
+              target="_blank"
+              className="hover:scale-125 transition-transform"
+            >
               <AiFillLinkedin />
             </a>
-            <a href="https://github.com/BarunKGP" target="_blank">
+            <a
+              href="https://github.com/BarunKGP"
+              target="_blank"
+              className="hover:scale-125 transition-transform"
+            >
               <AiFillGithub />
             </a>
-            <a href="https://medium.com/@barundas_79052" target="_blank">
+            <a
+              href="https://medium.com/@barundas_79052"
+              target="_blank"
+              className="hover:scale-125 transition-transform"
+            >
               <AiFillMediumCircle />
             </a>
           </div>
@@ -136,8 +119,8 @@ export default function Home() {
                 <input
                   type="email"
                   id="email"
-                  className=" shadow-sm ml-3 max-w-3 bg-gray-100 border border-gray-300 text-sm rounded-lg focus:border-primary-500 block w-full p-2.5 dark:bg-gray-900 dark:placeholder-gray-400"
-                  placeholder="name@email.com"
+                  className=" shadow-sm ml-3 max-w-3 bg-gray-100 border border-gray-300 text-sm rounded-lg focus:border-primary-500 block w-1/4 p-2.5 dark:bg-gray-900 dark:placeholder-gray-400"
+                  placeholder="Email"
                   required
                 ></input>
               </div>
@@ -151,7 +134,7 @@ export default function Home() {
                 <input
                   type="text"
                   id="subject"
-                  className=" shadow-sm ml-3 max-w-3 bg-gray-100 border border-gray-300 text-sm rounded-lg focus:ring-primary-500 block w-full p-2.5 dark:bg-gray-900 dark:placeholder-gray-400"
+                  className=" shadow-sm ml-3 max-w-3 bg-gray-100 border border-gray-300 text-sm rounded-lg focus:ring-primary-500 block w-1/3 p-2.5 dark:bg-gray-900 dark:placeholder-gray-400"
                   placeholder="Subject"
                   required
                 ></input>
@@ -168,7 +151,7 @@ export default function Home() {
                   type="text"
                   id="message"
                   rows="6"
-                  className=" sm:w-fit shadow-sm ml-3 bg-gray-100 border border-gray-300 text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-primary-500 block w-full p-2.5 dark:bg-gray-900 dark:placeholder-gray-400"
+                  className=" shadow-sm ml-3 bg-gray-100 border border-gray-300 text-sm rounded-lg focus:ring-4 focus:outline-none focus:ring-primary-500 block w-1/3 h-[200px] p-2.5 dark:bg-gray-900 dark:placeholder-gray-400"
                   placeholder="Your message"
                   required
                 ></input>

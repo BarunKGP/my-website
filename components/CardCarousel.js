@@ -1,7 +1,6 @@
-// "use-client";
-
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import {
   motion,
   useScroll,
@@ -9,13 +8,16 @@ import {
   useAnimate,
   easeIn,
   easeInOut,
+  AnimatePresence,
+  spring,
 } from "framer-motion";
 
-function getWindowSize() {
+const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState({
     width: undefined,
     height: undefined,
   });
+
   useEffect(() => {
     function handleResize() {
       setWindowSize({
@@ -23,98 +25,193 @@ function getWindowSize() {
         height: window.innerHeight,
       });
     }
-
+  
     window.addEventListener("resize", handleResize);
-    // Call event listener right away to initialize windowSize
-    handleResize();
+    handleResize(); // Call event listener right away to initialize windowSize
+  
+    return () => {window.removeEventListener("resize", handleResize);};
 
-    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return windowSize;
 }
 
 function CardCarousel({ cards }) {
-  const winSize = getWindowSize(),
-    screenCenter = { x: winSize.width / 2, y: winSize.height / 2 };
-  //   console.log(screenCenter);
-  //   const cardSize = useRef();
   const carousel = useRef(null);
   const { scrollXProgress } = useScroll({ container: carousel });
   const [hoverCardIndex, setHoverCardIndex] = useState(0);
+  const [show, setShow] = useState(false);
   let projectTitle = cards[hoverCardIndex].title;
-
+  let projectDesc = cards[hoverCardIndex].description;
+  
   useEffect(() => {
+    projectDesc = cards[hoverCardIndex].description;
     projectTitle = cards[hoverCardIndex].title;
   }, [hoverCardIndex]);
 
-  const projNameVariant = {
-    initial: {
-      x: 0,
-    },
-    enter: {
-      y: 50,
-      //   x: [50, 100],
-      //   scale: [1.5, 1],
-    },
+  const router = useRouter();
+  const handleCardClick = (e) => {
+    router.push("/project" + e.target.id);
   };
 
   return (
-    <div className="grid gap-6 grid-cols-1 justify-items-center align-middle ">
-      <svg
-        viewBox="0 0 100 100"
-        width="100"
-        height="100"
-        className="-rotate-90 "
-      >
-        <circle cx="50" cy="50" r="30" pathLength="1" className="circle-bg" />
-        <motion.circle
-          cx="50"
-          cy="50"
-          r="30"
-          pathLength="1"
-          strokeDashoffset="0"
-          className="stroke-lime-100 stroke-[15px] scale-90"
-          style={{ pathLength: scrollXProgress }}
-        />
-      </svg>
+    <AnimatePresence key="cards" mode="wait">
       <motion.div
-        ref={carousel}
-        className="flex flex-col overflow-x-scroll no-scrollbar 
-        gap-10 p-5 grow-0 shrink-0 w-full min-h-[870px] flex-1
+        className="grid gap-6 grid-cols-1 justify-items-end align-middle max-w-screen max-h-screen" 
+        initial={{ x: "100%", opacity: 0 }}
+        animate={{ x: "10px", opacity: 1 }}
+        exit={{ x: "100%" }}
+        transition={{
+          duration: 1,
+          type: "spring",
+          stiffness: 70,
+        }}
+      >
+        <svg
+          viewBox="0 0 100 100"
+          width="100"
+          height="100"
+          // className="-rotate-90 "
+        >
+          <circle cx="50" cy="50" r="35" pathLength="1" className="circle-bg" />
+          <motion.circle
+            cx="50"
+            cy="50"
+            r="35"
+            pathLength="1"
+            strokeDashoffset="0"
+            className="stroke-fuchsia-900 stroke-[10px] scale-90"
+            fill={"none"}
+            style={{ pathLength: scrollXProgress }}
+            transition={{
+              delay: 1,
+            }}
+          />
+        </svg>
+        <motion.div
+          ref={carousel}
+          className="flex flex-col overflow-x-scroll no-scrollbar 
+        gap-20 p-5 grow-0 shrink-0 w-full flex-1
         md:flex-row"
-      >
-        {cards.map((card, i) => {
-          return (
-            <div
-              key={i}
-              className="card-div grow-0 shrink-0"
-              onMouseEnter={(e) => setHoverCardIndex(i)}
-            >
-              <Image
-                src={card.imgSrc}
-                draggable={false}
-                alt="card-1"
-                fill
-                className="object-cover rounded-md"
-              />
-            </div>
-          );
-        })}
+          initial={{ opacity: 0, x: "100%" }}
+          animate={{ opacity: 1, x: "0%" }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+        >
+          {cards.map((card, i) => {
+            if (i === 0 || i >= cards.length - 1) {
+              return (
+                <motion.div
+                  key={i}
+                  className="card-div hover:shadow-none grow-0 shrink-0"
+                  onMouseEnter={(e) => setHoverCardIndex(i)}
+                ></motion.div>
+              );
+            }
+            return (
+              <motion.div
+                key={i}
+                className="card-div grow-0 shrink-0"
+                onMouseEnter={(e) => setHoverCardIndex(i)}
+                onMouseLeave={(e) => setHoverCardIndex(0)}
+                onClick={(e) => handleCardClick(e)}
+                whileHover={{
+                  x: "4px",
+                  scale: 1.07,
+                  transition: { duration: 0.4, ease: [0.6, 0.01, -0.05, 0.9] },
+                }}
+              >
+                <Image
+                  src={card.imgSrc}
+                  draggable={false}
+                  alt={"card-" + i}
+                  id={i}
+                  fill={true}
+                  className="relative object-cover rounded-md"
+                ></Image>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+        <motion.div
+          key={projectTitle}
+          variants={{
+            initial: { x: 0 },
+            animate: {
+              x: "-35vw",
+              transition: {
+                type: "spring",
+                stiffness: 100,
+                bounce: 0.15,
+                staggerChildren: 0.05,
+                // delayChildren: ,
+              },
+            },
+            exit: {
+              x: 0,
+              opacity: 0,
+              transition: {
+                duration: 0.4,
+                ease: [0.5, 0.3, -0.05, 0.01],
+              },
+            },
+          }}
+          animate="animate"
+          initial="initial"
+          exit="exit"
+          className="w-[30vw]"
+        > 
+          <motion.div className="text-center p-4">
+            <h2>
+              {projectTitle.split("").map((ch, chIndex) => {
+                return (
+                  <motion.span
+                    key={chIndex}
+                    className="font-akatab tracking-tighter text-gray-600 text-3xl"
+                    variants={{
+                      initial: { x: 0, opacity: 0 },
+                      animate: {
+                        x: 3 + chIndex * 2,
+                        opacity: 1,
+                        transition: {
+                          duration: 0.6,
+                          type: "spring",
+                        },
+                      },
+                    }}
+                  >
+                    {ch}
+                  </motion.span>
+                );
+              })}
+            </h2>
+            <p>
+              {projectDesc.split("").map((ch, index) => {
+                return (
+                  <motion.span
+                    key={index}
+                    className="tracking-tighter font-fonda text-gray-600 text-lg"
+                    variants={{
+                      initial: { x: 0, opacity: 0 },
+                      animate: {
+                        x: 8 + index * 8,
+                        opacity: 1,
+                        transition: {
+                          duration: 0.3,
+                          type: "spring",
+                        },
+                      },
+                    }}
+                  >
+                    {ch}
+                  </motion.span>
+                );
+              })}
+            </p>
+          </motion.div>
+        </motion.div>
       </motion.div>
-      <motion.div
-        key={projectTitle}
-        animate={{ x: 50 }}
-        transition={{ type: "spring", damping: 30, bounce: 0.3 }}
-        className="min-w-[300px]"
-      >
-        <div>
-          <h2 className="text-lime-100 text-2xl text-center ">
-            {projectTitle}
-          </h2>
-        </div>
-      </motion.div>
-    </div>
+    </AnimatePresence>
   );
 }
 
