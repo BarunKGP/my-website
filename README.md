@@ -1,4 +1,4 @@
-__Built with :heart: using Next.js, React, TailwindCSS and Framer-motion__
+_Built with :heart: using Next.js, React, TailwindCSS and Framer-motion_
 
 ## Getting Started
 
