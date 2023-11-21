@@ -25,16 +25,17 @@ const useWindowSize = () => {
         height: window.innerHeight,
       });
     }
-  
+
     window.addEventListener("resize", handleResize);
     handleResize(); // Call event listener right away to initialize windowSize
-  
-    return () => {window.removeEventListener("resize", handleResize);};
 
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return windowSize;
-}
+};
 
 function CardCarousel({ cards }) {
   const carousel = useRef(null);
@@ -43,21 +44,24 @@ function CardCarousel({ cards }) {
   const [show, setShow] = useState(false);
   let projectTitle = cards[hoverCardIndex].title;
   let projectDesc = cards[hoverCardIndex].description;
-  
+
   useEffect(() => {
     projectDesc = cards[hoverCardIndex].description;
     projectTitle = cards[hoverCardIndex].title;
   }, [hoverCardIndex]);
 
   const router = useRouter();
-  const handleCardClick = (e) => {
-    router.push("/project" + e.target.id);
+  const handleCardClick = (forwardLink) => {
+    // console.log(cardTitle);
+    // router.push("/project" + e.target.id);
+    // TODO: Add zod validation
+    router.push(forwardLink);
   };
 
   return (
     <AnimatePresence key="cards" mode="wait">
       <motion.div
-        className="grid gap-6 grid-cols-1 justify-items-end align-middle max-w-screen max-h-screen" 
+        className="grid gap-8 grid-cols-1 justify-items-end align-middle max-w-screen max-h-screen"
         initial={{ x: "100%", opacity: 0 }}
         animate={{ x: "10px", opacity: 1 }}
         exit={{ x: "100%" }}
@@ -80,7 +84,7 @@ function CardCarousel({ cards }) {
             r="35"
             pathLength="1"
             strokeDashoffset="0"
-            className="stroke-fuchsia-900 stroke-[10px] scale-90"
+            className="stroke-[15px] scale-90 stroke-violet-900 dark:stroke-lime-200"
             fill={"none"}
             style={{ pathLength: scrollXProgress }}
             transition={{
@@ -91,7 +95,7 @@ function CardCarousel({ cards }) {
         <motion.div
           ref={carousel}
           className="flex flex-col overflow-x-scroll no-scrollbar 
-        gap-20 p-5 grow-0 shrink-0 w-full flex-1
+        gap-28 p-4 grow-1 shrink-0 w-full flex-1
         md:flex-row"
           initial={{ opacity: 0, x: "100%" }}
           animate={{ opacity: 1, x: "0%" }}
@@ -103,7 +107,7 @@ function CardCarousel({ cards }) {
               return (
                 <motion.div
                   key={i}
-                  className="card-div hover:shadow-none grow-0 shrink-0"
+                  className="card-div grow-0 shrink-0"
                   onMouseEnter={(e) => setHoverCardIndex(i)}
                 ></motion.div>
               );
@@ -114,7 +118,7 @@ function CardCarousel({ cards }) {
                 className="card-div grow-0 shrink-0"
                 onMouseEnter={(e) => setHoverCardIndex(i)}
                 onMouseLeave={(e) => setHoverCardIndex(0)}
-                onClick={(e) => handleCardClick(e)}
+                onClick={() => handleCardClick(card.link)}
                 whileHover={{
                   x: "4px",
                   scale: 1.07,
@@ -141,6 +145,7 @@ function CardCarousel({ cards }) {
               x: "-35vw",
               transition: {
                 type: "spring",
+                duration: 0.2,
                 stiffness: 100,
                 bounce: 0.15,
                 staggerChildren: 0.05,
@@ -160,22 +165,22 @@ function CardCarousel({ cards }) {
           initial="initial"
           exit="exit"
           className="w-[30vw]"
-        > 
+        >
           <motion.div className="text-center p-4">
             <h2>
               {projectTitle.split("").map((ch, chIndex) => {
                 return (
                   <motion.span
                     key={chIndex}
-                    className="font-akatab tracking-tighter text-gray-600 text-3xl"
+                    className="font-akatab tracking-tighter text-slate-800 dark:text-purple-500 text-5xl font-semibold"
                     variants={{
                       initial: { x: 0, opacity: 0 },
                       animate: {
-                        x: 3 + chIndex * 2,
+                        x: 3 + chIndex * 1.2,
                         opacity: 1,
                         transition: {
                           duration: 0.6,
-                          type: "spring",
+                          type: "easeIn",
                         },
                       },
                     }}
@@ -190,7 +195,7 @@ function CardCarousel({ cards }) {
                 return (
                   <motion.span
                     key={index}
-                    className="tracking-tighter font-fonda text-gray-600 text-lg"
+                    className="tracking-tight font-akatab font-thin dark:text-stone-300 text-gray-600 text-lg"
                     variants={{
                       initial: { x: 0, opacity: 0 },
                       animate: {

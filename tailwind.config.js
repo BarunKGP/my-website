@@ -16,7 +16,11 @@ module.exports = {
         staatliches: ["Staatliches", "cursive"],
         akatab: ["Akatab", "sans-serif"],
         mplus1: ["M PLUS 1 Code", "monospace"],
-        fonda: ["Fondamento", "cursive"]
+        fonda: ["Fondamento", "cursive"],
+        bali: ["Noto Serif Balinese", "serif"],
+        merriweather: ["Merriweather", "serif"],
+        quicksand: ["Quicksand", "sans-serif"],
+        cantarell: ["Cantarell", "sans-serif"],
       },
       transitionTimingFunction: {
         "fill-in-out": "cubic-bezier(0.680, -0.550, 0.265, 1.550)",

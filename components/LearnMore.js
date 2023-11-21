@@ -4,11 +4,21 @@ const swipeBackground = () => {};
 function LearnMore({ text }) {
   return (
     <div>
-      <button class="group relative scale-100 transition-transform h-12 w-32 overflow-hidden rounded-md bg-amber-400 text-md shadow hover:scale-125">
-        <div class="absolute inset-0 w-3  transition-all duration-[250ms] ease-out group-hover:w-full"></div>
-        <span class="relative text-black group-hover:text-white">
+      <button
+        className="group relative scale-100 transition-transform overflow-hidden rounded-md text-md 
+      shadow hover:scale-125 bg-gradient-to-r from-emerald-700 to-slate-900"
+      >
+        {/* <div className="absolute inset-0 w-3  transition-all duration-[250ms] ease-out group-hover:w-full"></div> */}
+        <a
+          className=" py-2 px-2 border-none rounded-md ml-3 text-stone-200 font-mono hover:text-white text-xl text-center inline-block"
+          href="https://drive.google.com/file/d/18kfzzxiHuOqVZdCBnmUnr3cFvJ2KRdmI/view"
+          target="_blank"
+        >
+          Resume
+        </a>
+        {/* <span className="relative text-black group-hover:text-white">
           Learn more
-        </span>
+        </span> */}
       </button>
 
       {/* <button
