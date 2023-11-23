@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { ThemeProvider } from "next-themes";
 import CardCarousel from "@/components/CardCarousel";
 import Header from "@/components/Header";
+import ScrollElem from "@/components/ScrollElem";
 
 export default function projects() {
   const cards = [
@@ -84,7 +85,9 @@ export default function projects() {
       <div className=" grow-[3] shrink basis-3/4  w-full ">
         <CardCarousel cards={cards} />
       </div>
-      <div className=" grow shrink basis-1/4 w-full"></div>
+      <div className=" grow shrink basis-1/4 w-full">
+        <ScrollElem />
+      </div>
     </div>
   );
 }

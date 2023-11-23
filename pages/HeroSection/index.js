@@ -60,6 +60,7 @@ const HeroSection = () => {
         <a
           href=" mailto:barun.das.23@gmail.com"
           target=" _blank"
+          rel="noopener"
           className="hover:scale-125 transition-transform"
         >
           <AiFillMail />
@@ -67,6 +68,7 @@ const HeroSection = () => {
         <a
           href="https://www.linkedin.com/in/barun-das/"
           target="_blank"
+          rel="noopener"
           className="hover:scale-125 transition-transform"
         >
           <AiFillLinkedin />
@@ -74,6 +76,7 @@ const HeroSection = () => {
         <a
           href="https://github.com/BarunKGP"
           target="_blank"
+          rel="noopener"
           className="hover:scale-125 transition-transform"
         >
           <AiFillGithub />
@@ -81,6 +84,7 @@ const HeroSection = () => {
         <a
           href="https://medium.com/@barundas_79052"
           target="_blank"
+          rel="noopener"
           className="hover:scale-125 transition-transform"
         >
           <AiFillMediumCircle />
