@@ -1,8 +1,5 @@
 import Head from "next/head";
-import { Inter } from "@next/font/google";
 import HeroSection from "./HeroSection";
-
-const inter = Inter({ subsets: ["latin"] });
 
 const ContactForm = () => {
   console.log("Change the contact form");

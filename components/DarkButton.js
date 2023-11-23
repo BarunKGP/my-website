@@ -9,14 +9,15 @@ import { BsMoonStarsFill, BsSunriseFill } from "react-icons/bs";
 
 function DarkButton() {
   const { theme, setTheme } = useTheme();
-  // const { mount, setMount } = useState(false);
+  const [mount, setMount] = useState(false);
 
-  // useEffect(() => {
-  //   setMount(true);
-  // }, []);
+  useEffect(() => {
+    setMount(true);
+  }, []);
 
-  // if (!mount) return null;
-
+  if (!mount) {
+    return null;
+  }
   return (
     <button
       onClick={() => {
@@ -24,10 +25,10 @@ function DarkButton() {
       }}
     >
       {theme === "dark" ? (
-        <BsSunriseFill style={{ color: "#ecfccb" }} size={30} />
+        <BsSunriseFill style={{ color: "#ecfccb" }} size={35} />
       ) : (
         <BsMoonStarsFill
-          size={30}
+          size={35}
           style={{ color: "#3b0764" }}
           // style={theme === "dark" ? { color: "white" } : { color: "black" }}
         />

@@ -21,6 +21,13 @@ module.exports = {
         merriweather: ["Merriweather", "serif"],
         quicksand: ["Quicksand", "sans-serif"],
         cantarell: ["Cantarell", "sans-serif"],
+        aileron: ["Aileron", "sans-serif"],
+      },
+      fontWeight: {
+        "aileron-regular": 400,
+        "aileron-light": 300,
+        "aileron-semibold": 600,
+        "aileron-bold": 700,
       },
       transitionTimingFunction: {
         "fill-in-out": "cubic-bezier(0.680, -0.550, 0.265, 1.550)",

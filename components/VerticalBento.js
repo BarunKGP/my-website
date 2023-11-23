@@ -4,7 +4,7 @@ import ExperienceCard from "./ExperienceCard";
 
 const VerticalBento = () => {
   return (
-    <div className="w-full h-full flex justify-center p-4">
+    <div className="flex justify-center p-4">
       <div className="grid gap-6 grid-cols-2">
         {experienceData.map(
           (exp, i) => (

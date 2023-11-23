@@ -11,17 +11,17 @@ const links = [
 ];
 
 const linkStyles = {
-  true: "p-2 font-mono text-purple-950 text-xl dark:text-lime-100 border-b-4 border-b-lime-200",
-  false: "p-2 font-mono text-purple-950 text-xl dark:text-lime-100",
+  true: "p-2 font-aileron-light text-purple-950 text-2xl dark:text-lime-100 border-b-4 border-b-lime-200",
+  false: "p-2 font-aileron-light text-purple-950 text-2xl dark:text-lime-100",
 };
 
 function Header() {
   const path = usePathname();
   return (
-    <div className="fixed overflow-hidden top-0 w-full h-28 z-10 block">
+    <div className="fixed overflow-hidden top-0 w-full h-28 z-10">
       <nav className="grid grid-cols-5 h-[100px] p-5 gap-2 items-center m-2 mx-auto ">
         <div className="sitehome text-start">
-          <h1 className="text-center font-mono text-purple-950 text-xl dark:text-lime-100">
+          <h1 className="text-center font-aileron-light text-purple-950 text-2xl dark:text-lime-100">
             <Link href="/">barun.das</Link>
           </h1>
         </div>

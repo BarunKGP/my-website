@@ -37,21 +37,21 @@ const HeroSection = () => {
       <div className="dark:text-lime-100 text-gray-800 text-center p-5 font-mono ">
         <h2
           data-value="BARUN DAS"
-          className=" text-8xl bg-gradient-to-tr from-indigo-900 via-lime-200 to-purple-400 inline-block text-transparent bg-clip-text"
+          className=" text-8xl bg-gradient-to-tr from-slate-900 via-lime-300 to-purple-700 inline-block text-transparent bg-clip-text"
           onMouseOver={(e) => hackerize(e)}
         >
           BARUN DAS
         </h2>
         <br />
         <h3
-          className=" text-3xl p-4 text-center font-medium  bg-gradient-to-tr from-indigo-900 via-lime-200 to-purple-400 inline-block text-transparent bg-clip-text"
+          className=" text-3xl p-4 text-center font-medium  bg-gradient-to-tr from-slate-900 via-lime-200 to-purple-700 inline-block text-transparent bg-clip-text"
           data-value="Software Engineer"
           onMouseOver={(e) => hackerize(e, 1)}
         >
           Software Engineer
         </h3>
         <LearnMore text="Learn More ->" />
-        <p className=" py-5 text-3xl font-light leading-6 text-gray-400">
+        <p className=" py-5 text-3xl font-light leading-6 text-purple-950 dark:text-lime-100">
           Software developer and machine learning researcher, with a passion for
           designing scalable and efficient systems
         </p>
