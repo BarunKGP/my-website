@@ -58,7 +58,7 @@ const HeroSection = () => {
       </div>
       <div className=" text-2xl justify-center flex text-gray-700 dark:text-stone-200 gap-7 py-1 ">
         <a
-          href=" mailto:barun.das.23@gmail.com"
+          href="mailto:barun.das.23@gmail.com"
           target=" _blank"
           rel="noreferrer"
           className="hover:scale-125 transition-transform"

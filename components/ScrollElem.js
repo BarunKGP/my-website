@@ -1,6 +1,6 @@
 import React from "react";
 import { RxDoubleArrowRight } from "react-icons/rx";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, easeInOut } from "framer-motion";
 
 function ScrollElem() {
   return (
@@ -8,7 +8,15 @@ function ScrollElem() {
       <motion.span className="text-2xl font-aileron-light  text-slate-800 dark:text-slate-300">
         Scroll
       </motion.span>
-      <RxDoubleArrowRight size={40} />
+      <motion.div
+        initial={{ rotate: 0 }}
+        animate={{
+          rotate: "5deg",
+          transition: { duration: 0.2, type: easeInOut },
+        }}
+      >
+        <RxDoubleArrowRight size={40} />
+      </motion.div>
     </div>
   );
 }

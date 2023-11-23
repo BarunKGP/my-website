@@ -13,6 +13,7 @@ function LearnMore({ text }) {
           className=" py-2 px-2 border-none rounded-md ml-3 text-stone-200 font-mono hover:text-white text-xl text-center inline-block"
           href="https://drive.google.com/file/d/18kfzzxiHuOqVZdCBnmUnr3cFvJ2KRdmI/view"
           target="_blank"
+          rel="noreferrer"
         >
           Resume
         </a>
