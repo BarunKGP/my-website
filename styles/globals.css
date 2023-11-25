@@ -12,6 +12,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;1,400&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cantarell:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap');
 
 @font-face{
   font-family: 'Aileron';
@@ -154,8 +155,8 @@
   }
 
   .card-div {
-    @apply relative h-[450px] rounded-md basis-[500px] 
-    last:mr-0 cursor-pointer;
+    @apply w-[28rem] h-96
+    relative rounded-md last:mr-0 cursor-pointer;
   }
 
   .circle-bg {

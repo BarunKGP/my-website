@@ -61,7 +61,7 @@ function CardCarousel({ cards }) {
   return (
     <AnimatePresence key="cards" mode="wait">
       <motion.div
-        className="grid gap-8 grid-cols-1 justify-items-end align-middle max-w-screen max-h-screen"
+        className="grid gap-8 grid-cols-1 justify-items-end align-middle max-w-screen"
         initial={{ x: "100%", opacity: 0 }}
         animate={{ x: "10px", opacity: 1 }}
         exit={{ x: "100%" }}
@@ -131,7 +131,8 @@ function CardCarousel({ cards }) {
                   alt={"card-" + i}
                   id={i}
                   fill={true}
-                  className="relative object-cover rounded-md"
+                  style={{ aspectRatio: 1 / 1 }}
+                  className="relative object-cover"
                 ></Image>
               </motion.div>
             );

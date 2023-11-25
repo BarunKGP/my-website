@@ -7,11 +7,17 @@ import {
   AiFillMail,
 } from "react-icons/ai";
 import avatar from "@/public/avatar.png";
-import LearnMore from "@/components/LearnMore";
+import { Handjet } from "next/font/google";
+
+const handjet = Handjet({
+  weight: ["200", "300"],
+  subsets: ["latin"],
+  variable: "--font-handjet",
+});
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-function hackerize(event, iterSkip = 1 / 3) {
+function hackerize(event, iterSkip = 0.33) {
   let iterations = 0;
   const interval = setInterval(() => {
     event.target.innerText = event.target.innerText
@@ -30,31 +36,32 @@ function hackerize(event, iterSkip = 1 / 3) {
 
 const HeroSection = () => {
   return (
-    <div className="h-full w-full">
-      <div className=" mt-20 relative mx-auto bg-gradient-to-b from-purple-800 to-lime-200 w-[500px] rounded-full overflow-hidden">
+    <div>
+      <div className=" mt-20 relative mx-auto bg-gradient-to-b from-purple-800 to-lime-200 w-[350px] sm:w-[500px] rounded-full overflow-hidden">
         <Image src={avatar} alt="avatar image" />
       </div>
-      <div className="dark:text-lime-100 text-gray-800 text-center p-5 font-mono ">
+      <div
+        className={`dark:text-lime-100 text-gray-800 text-center p-5 ${handjet.variable} font-handjet font-light`}
+      >
         <h2
           data-value="BARUN DAS"
-          className=" text-8xl bg-gradient-to-tr from-slate-900 via-lime-300 to-purple-700 inline-block text-transparent bg-clip-text"
-          onMouseOver={(e) => hackerize(e)}
+          className=" text-6xl bg-gradient-to-tr from-slate-900 via-lime-300 to-purple-700 inline-block text-transparent bg-clip-text"
+          onMouseOver={(e) => hackerize(e, 1 / 2)}
         >
           BARUN DAS
         </h2>
         <br />
         <h3
-          className=" text-3xl p-4 text-center font-medium  bg-gradient-to-tr from-slate-900 via-lime-200 to-purple-700 inline-block text-transparent bg-clip-text"
+          className=" text-2xl p-4 text-center font-medium  bg-gradient-to-tr from-slate-900 via-lime-200 to-purple-700 inline-block text-transparent bg-clip-text"
           data-value="Software Engineer"
           onMouseOver={(e) => hackerize(e, 1)}
         >
           Software Engineer
         </h3>
-        <LearnMore text="Learn More ->" />
-        <p className=" py-5 text-3xl font-light leading-6 text-purple-950 dark:text-lime-100">
+        {/* <p className=" py-5 text-3xl font-light leading-6 text-purple-950 dark:text-lime-100">
           Software developer and machine learning researcher, with a passion for
           designing scalable and efficient systems
-        </p>
+        </p> */}
       </div>
       <div className=" text-2xl justify-center flex text-gray-700 dark:text-stone-200 gap-7 py-1 ">
         <a

@@ -24,7 +24,7 @@ export default function projects() {
       skills: "pytorch, accelerate, Transformers, DeepSpeed",
       start: "01-2022",
       end: "07-2023",
-      link: "/",
+      link: "https://github.com/BarunKGP/HAAR",
     },
     {
       title: "DoGe",
@@ -35,7 +35,7 @@ export default function projects() {
       skills: "PyTorch, tensorboard, scikit-learn",
       start: "09-2022",
       end: "12-2022",
-      link: "/",
+      link: "https://github.com/ChayneThrash/DomainBed/tree/main",
     },
     {
       title: "AI Storytelling",
@@ -49,6 +49,7 @@ export default function projects() {
       skills: "PyTorch, accelerate, Transformers, DeepSpeed",
       start: "01-2022",
       end: "07-2023",
+      link: "https://github.com/BarunKGP/gpt-stories",
     },
     {
       title: "Blockboard",
@@ -59,7 +60,7 @@ export default function projects() {
       skills: "Flask, Pandas, scikit, D3.js, MySQL",
       start: "08-2021",
       end: "12-2021",
-      link: "/",
+      link: "https://github.com/Qblinx-BlockBoard/blockboard",
     },
     {
       title: "",
@@ -80,12 +81,12 @@ export default function projects() {
     // },
   ];
   return (
-    <div className="flex gap-4 flex-col justify-evenly overflow-hidden mt-28 px-20">
+    <div className="grid grid-cols-1 gap-8 justify-items-center overflow-hidden mt-28 px-10">
       {/* <Header /> */}
-      <div className=" grow-[3] shrink basis-3/4  w-full ">
+      <div className="w-full">
         <CardCarousel cards={cards} />
       </div>
-      <div className=" grow shrink basis-1/4 w-full">
+      <div className="max-h-[5rem] flex flex-row-reverse w-full absolute bottom-4">
         <ScrollElem />
       </div>
     </div>
