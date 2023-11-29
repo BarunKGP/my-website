@@ -13,6 +13,7 @@ const handjet = Handjet({
   weight: ["200", "300"],
   subsets: ["latin"],
   variable: "--font-handjet",
+  display: "swap",
 });
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

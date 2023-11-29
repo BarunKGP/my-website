@@ -17,6 +17,7 @@ const akatab = Akatab({
   weight: ["400", "500"],
   subsets: ["latin"],
   variable: "--font-akatab",
+  display: "swap",
 });
 
 const useWindowSize = () => {
