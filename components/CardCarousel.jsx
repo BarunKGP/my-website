@@ -11,6 +11,13 @@ import {
   AnimatePresence,
   spring,
 } from "framer-motion";
+import { Akatab } from "next/font/google";
+
+const akatab = Akatab({
+  weight: ["400", "500"],
+  subsets: ["latin"],
+  variable: "--font-akatab",
+});
 
 const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState({
@@ -84,7 +91,7 @@ function CardCarousel({ cards }) {
             r="35"
             pathLength="1"
             strokeDashoffset="0"
-            className="stroke-[15px] scale-90 stroke-violet-900 dark:stroke-lime-200"
+            className="stroke-[15px] scale-90 stroke-slate-900 dark:stroke-lime-100"
             fill={"none"}
             style={{ pathLength: scrollXProgress }}
             transition={{
@@ -173,7 +180,8 @@ function CardCarousel({ cards }) {
                 return (
                   <motion.span
                     key={chIndex}
-                    className="font-akatab tracking-tighter text-slate-800 dark:text-purple-500 text-5xl font-semibold"
+                    className={`${akatab.variable} font-akatab text-slate-800 
+                    dark:text-lime-100 text-4xl font-medium`}
                     variants={{
                       initial: { x: 0, opacity: 0 },
                       animate: {
@@ -196,7 +204,8 @@ function CardCarousel({ cards }) {
                 return (
                   <motion.span
                     key={index}
-                    className="tracking-tight font-akatab font-thin dark:text-stone-300 text-gray-600 text-lg"
+                    className={`${akatab.variable} font-akatab dark:text-stone-300 
+                    text-gray-600 text-xl`}
                     variants={{
                       initial: { x: 0, opacity: 0 },
                       animate: {

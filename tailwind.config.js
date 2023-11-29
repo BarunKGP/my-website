@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
@@ -11,15 +12,16 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        akatab: ["Akatab", "sans-serif"],
         noto: ["Noto Sans KR", "sans-serif"],
-        quicksand: ["Quicksand", "sans-serif"],
-        cantarell: ["Cantarell", "sans-serif"],
+        // quicksand: ["Quicksand", "sans-serif"],
         aileron: ["Aileron", "sans-serif"],
 
         bayon: ["var(--font-bayon)", "sans-serif"],
         handjet: ["var(--font-handjet)", "sans-serif"],
         hwr: ["var(--font-hwr)", "cursive", "sans-serif"],
+        qs: ["var(--font-qs)", "sans-serif"],
+        cantarell: ["var(--font-cantarell)", "sans-serif"],
+        akatab: ["var(--font-akatab)", "sans-serif"],
 
         lora: ["Lora", "serif"],
         bali: ["Noto Serif Balinese", "serif"],

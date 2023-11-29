@@ -29,18 +29,18 @@ const links = [
 ];
 
 const linkStyles = {
-  true: `p-2 ${bayon.variable} font-bayon text-purple-950 text-2xl dark:text-lime-100 border-b-4 border-b-lime-200`,
-  false: `p-2 ${bayon.variable} font-bayon text-purple-950 text-2xl dark:text-lime-100`,
+  true: `p-2 ${bayon.variable} font-bayon text-slate-900 text-2xl dark:text-lime-100 border-b-4 border-b-lime-200`,
+  false: `p-2 ${bayon.variable} font-bayon text-slate-900 text-2xl dark:text-lime-100`,
 };
 
 function Header() {
   const path = usePathname();
   return (
-    <div className="fixed top-0 left-0 w-[100svw] dark:bg-slate-900 bg-indigo-50 bg-opacity-60 rounded-xl hover:bg-opacity-80 transition-transform m-0">
+    <div className="fixed top-0 left-0 w-[100svw] dark:bg-slate-900 bg-indigo-50 bg-opacity-60 hover:bg-opacity-80 transition-transform m-0">
       <div className="grid grid-cols-3 p-5 gap-4  m-2 mx-auto items-center justify-items-end">
         <div className="sitehome flex justify-start w-full">
           <h1
-            className={`${hwr.variable} font-hwr text-indigo-900 dark:text-lime-100 text-2xl`}
+            className={`${hwr.variable} font-hwr text-slate-900 dark:text-lime-100 text-2xl`}
           >
             <Link href="/">{"<barun.das/>"}</Link>
           </h1>

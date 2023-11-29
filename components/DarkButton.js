@@ -29,7 +29,7 @@ function DarkButton() {
       ) : (
         <BsMoonStarsFill
           size={35}
-          style={{ color: "#3b0764" }}
+          style={{ color: "#1b2335" }}
           // style={theme === "dark" ? { color: "white" } : { color: "black" }}
         />
       )}
