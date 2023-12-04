@@ -55,8 +55,7 @@ export default function projects() {
       title: "Blockboard",
       imgSrc: "/blocks.jpg",
       description:
-        "    Multifunctional tool for Bitcoin analysis and visualizations based on block time " +
-        "(created back when Bitcoin was cool)",
+        "    Multifunctional tool for Bitcoin analysis and visualizations based on block time ",
       skills: "Flask, Pandas, scikit, D3.js, MySQL",
       start: "08-2021",
       end: "12-2021",
